@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   SafeAreaView,
+  Pressable,
 } from "react-native";
 import React, { useState, useContext, useEffect } from "react";
 import Button from "../components/Button";
@@ -56,6 +57,13 @@ const Parkingspace = ({
       alert("No space available");
     }
   }, [noOfCar]);
+
+  const getCurrentTime = () => {
+    let hr = new Date().getHours();
+    console.log("hello", hr);
+    setParkingHour(hr);
+    setParkingMin(new Date().getMinutes());
+  };
 
   const parkingAllocationHandler = () => {
     // variable for storing parking time and current
@@ -153,7 +161,9 @@ const Parkingspace = ({
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.headTxt}>create parking spaces</Text>
+      <Text style={styles.headTxt}>
+        create parking spaces {`(${parkingSpaces})`}
+      </Text>
       <Text style={styles.headTxt}>Available space: {noOfCar} of 10</Text>
       <View style={styles.list_container}>
         <FlatList data={parkingSpace} renderItem={renderItem} numColumns={2} />
@@ -164,35 +174,13 @@ const Parkingspace = ({
             <Text style={{ marginVertical: 4 }}>
               Parking Time(Tap to change):
             </Text>
-            <View
-              style={{
-                width: "100%",
-                borderWidth: 0.8,
-                borderColor: "gray",
-                flexDirection: "row",
-                alignItems: "center",
-              }}
-            >
-              <TextInput
-                style={styles.smallInput}
-                onChangeText={(text: any) => {
-                  setParkingHour(text);
-                }}
-                value={parkingHour}
-                placeholder="HH"
-                keyboardType="numeric"
-              />
-              <Text style={{ fontSize: 25 }}>: </Text>
-              <TextInput
-                style={styles.smallInput}
-                onChangeText={(text: any) => {
-                  setParkingMin(text);
-                }}
-                value={parkingMin}
-                placeholder="MM"
-                keyboardType="numeric"
-              />
-            </View>
+            <Pressable style={styles.boxStyle} onPress={getCurrentTime}>
+              <Text
+                style={[{ fontSize: 14 }, !parkingHour && { color: "gray" }]}
+              >
+                {parkingHour ? `${parkingHour} : ${parkingMin}` : "HH : MM"}
+              </Text>
+            </Pressable>
             <Text style={{ marginVertical: 4 }}>Car Registration:</Text>
 
             <TextInput
@@ -287,5 +275,13 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     marginRight: 6,
     textAlign: "center",
+  },
+  boxStyle: {
+    width: "100%",
+    borderWidth: 0.8,
+    borderColor: "gray",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 6,
   },
 });

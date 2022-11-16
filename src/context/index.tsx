@@ -17,52 +17,52 @@ export default function Store(props: any) {
     {
       id: 1,
       entrytime: "",
-      carNo: "MH28BC3423",
+      carNo: "",
     },
     {
       id: 2,
       entrytime: "",
-      carNo: "MH28BC3423",
+      carNo: "",
     },
     {
       id: 3,
       entrytime: "",
-      carNo: "MH28BC3423",
+      carNo: "",
     },
     {
       id: 4,
       entrytime: "",
-      carNo: "MH28BC3423",
+      carNo: "",
     },
     {
       id: 5,
       entrytime: "",
-      carNo: "MH28BC3423",
+      carNo: "",
     },
     {
       id: 6,
       entrytime: "",
-      carNo: "MH28BC3423",
+      carNo: "",
     },
     {
       id: 7,
       entrytime: "",
-      carNo: "MH28BC3423",
+      carNo: "",
     },
     {
       id: 8,
       entrytime: "",
-      carNo: "MH28BC3423",
+      carNo: "",
     },
     {
       id: 9,
-      entrytime: "00:01",
-      carNo: "MH28BC3423",
+      entrytime: "",
+      carNo: "",
     },
     {
       id: 10,
       entrytime: "",
-      carNo: "MH28BC3423",
+      carNo: "",
     },
   ]);
 
